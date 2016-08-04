@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style>
+		html,body{
+			margin: 0;
+			padding: 0;
+		}
+		.capsFrame{
+			position: relative;
+		}
+		#capsMaker{
+			width: 900px;
+			margin:20px auto;
+		}
+		.capsFrame,.capsText,.settingsFrame{
+			width: 100%;
+		}
+		.imgFrame img{
+			width: 100%;
+		}
+		.capsText{
+			background-color: red;
+			color:white;
+			padding: 10px;
+			width: calc(100% - 20px);
+			position: absolute;
+			bottom:0;
+		}
+		.capsText p{
+			margin: 0;
+		}
+		.settingsFrame input{
+			padding: 10px 20px;
+			width: calc(100% - 40px);
+			border: 1px solid red;
+			margin: 10px 0px;
+		}
+		.settingsFrame input:focus{
+			background: lightgray;
+		}
+		.settingsFrame button{
+			border: none;
+			background-color: red;
+			color:white;
+			padding: 5px 10px;
+		}
+	</style>
+</head>
+<body>
+	<div id="capsMaker">
+		<div class="capsFrame">
+			<div class="imgFrame">
+				<img src="image/img1.jpg" alt="">
+			</div>
+			<div class="capsText">
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+			</div>
+		</div>
+		<div class="settingsFrame">
+			<input type="text" placeholder="Seklinizin linkini buraya daxil edin">
+			<button onclick="addImage()">Add Image</button>
+			<input type="text" placeholder="Caps texti bura elave edin.">
+			<button onclick="addText()">Add Text</button>
+			<button onclick="changeImageBorder()">CHANGE IMAGE BORDER</button>
+			<button onclick="changeBackgroundAndColor()">CHANGE IMAGE TEXT BACKGROUND AND COLOR</button>
+			<button onclick="changeTextPositionToTop()">CHANGE TEXT POSITION TO TOP</button>
+		</div>
+	</div>
+	<script>
+		imageArr = ["images/01.jpg", "image/img2.jpg", "image/img3.jpg", "image/img4.jpg", "image/img5.jpg", "image/img6.jpg"];
+
+		var newDiv1 = document.createElement("div");
+		newDiv1.setAttribute("id", "capsMaker");
+		var newDiv2 = document.createElement("div");
+		newDiv2.setAttribute("class", "capsFrame");
+		newDiv1.appendChild(newDiv2);
+		var newDiv3 = document.createElement('div');
+		newDiv3.setAttribute("class", "imgFrame");
+		newDiv2.appendChild(newDiv3);
+		var image = document.createElement('img');
+		newDiv3.appendChild(image);
+		var newDiv4 = document.createElement('div');
+		newDiv4.setAttribute("class", "desc");
+		newDiv2.appendChild(newDiv4);
+		var para = document.createElement('p');
+		para.innerHTML = "Lorem ipsum dolor sit amet, consectetur adipisicing elit.";
+		newDiv4.appendChild(para);
+		var newDiv5 = document.createElement('div');
+		newDiv5.setAttribute("class", "settingsFrame");
+		newDiv1.appendChild(newDiv4);
+		var unput1 = document.createElement('input');
+		input1.setAttribute("type", "text");
+		input1.setAttribute("placeholder", "Seklinizin linkini buraya daxil edin.");
+		newDiv5.appendChild(input1);
+		var button1 = document.createElement('button');
+		button1.setAttribute("onclick", "addImage()");
+		button1.innerHTML = "Add Image";
+		newDiv5.appendChild(button1);
+		var unput2 = document.createElement('input');
+		input2.setAttribute("type", "text");
+		input2.setAttribute("placeholder", "Caps texti bura elave edin.");
+		newDiv5.appendChild(input2);
+		var button2 = document.createElement('button');
+		button2.setAttribute("onclick", "addText()");
+		button2.innerHTML = "Add Text";
+		newDiv5.appendChild(button2);
+		var button3 = document.createElement('button');
+		button3.setAttribute("onclick", "changeImageBorder()");
+		button3.innerHTML = "CHANGE IMAGE BORDER";
+		newDiv5.appendChild(button3);
+		var button4 = document.createElement('button');
+		button4.setAttribute("onclick", "changeBackgroundAndColor()");
+		button4.innerHTML = "CHANGE IMAGE TEXT BACKGROUND AND COLOR";
+		newDiv5.appendChild(button4);
+		var button5 = document.createElement('button');
+		button5.setAttribute("onclick", "changeTextPositionToTop()");
+		button5.innerHTML = "CHANGE TEXT POSITION TO TOP";
+		newDiv5.appendChild(button5);
+		document.body.appendChild(newDiv1);
+		
+		var imageSource = document.getElementsByTagName('img')[0];
+		imageSource.setAttribute('src',imageArr[0]);
+		var descSource = document.getElementsByClassName('desc')[0].getElementsByTagName('p')[0];
+		descSource.innerHTML = imageArr[0];
+
+		var newDiv1 = document.createElement('div').setAttribute()
+		var addImage=function(){
+			var capsImg=document.getElementsByTagName("input")[0].value;
+			if (capsImg=="") {
+				alert("Sekil yoxdur")
+			}else{
+				console.log(capsImg)
+				document.getElementsByClassName("imgFrame")[0].getElementsByTagName("img")[0].src=""+capsImg;
+			}
+		}
+		function addText(){
+			var capsText=document.getElementsByTagName("input")[1].value;
+			document.getElementsByClassName("capsText")[0].innerHTML="<p>"+capsText+"</p>"
+		}
+	</script>
+</body>
+</html>
